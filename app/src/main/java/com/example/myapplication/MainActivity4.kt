@@ -56,7 +56,7 @@ class MainActivity4 : AppCompatActivity(){
        // Log.i("qwerty","2dArray=${doubleArr[0][1]}")
 
         //let
-        Person4("Name3",31).let {
+        Person4("Name3",31).let{
           //  Log.i("qwerty","let=$it")
             it.age=41
          //   Log.i("qwerty","let2=$it")
@@ -80,28 +80,33 @@ class MainActivity4 : AppCompatActivity(){
         }*/
 
         //Optional
-        var b : String?="asd"
-        b = null
-        var b2=b!!
+            var b : String?="asd"
+            b = null
+            var b2=b
 
-        //Optional N1
-        val t:Person4?=null
+            //Optional N1
+            val t:Person4?=null
 
-        if(t!=null){perform(t)}
+            if(t!=null){perform(t)}
 
-        t?.let{ perform(t)}
+            t?.let{perform(t)}
 
-        var gh = if(t!=null){
-            t.name.length
-        }else{
-            32
-        }
+            var gh =if(t!=null)
+            {
+                t.name.length
+            }else{
+                32
+            }
 
-        var gk = t?.name?.length?:32
+            var gk = t?.name?.length?:32
 
         //Singleton
-        Singleton.printVarName()
-
+        //Singleton1.printVarName()
+        Log.i("qwerty","Singleton="+Singleton.getCoin())
+        Singleton.addCoin(12)
+        Log.i("qwerty","Singleton="+Singleton.getCoin())
+        Singleton.deductCoin(3)
+        Log.i("qwerty","Singleton="+Singleton.getCoin())
 }
     private fun perform(person: Person4){
         Log.i("qwerty","perform called")
@@ -111,38 +116,36 @@ data class Person4(var name: String, var age:Int=0)
 
 open class A{
     open fun printVarName(){
-        print("I am in class printVarName")
+        Log.i("qwerty","I am in class printVarName")
     }
 
-    init {
-        println("I am in init of A")
+    init{
+        Log.i("qwerty","I am in init of A")
     }
 }
 
-object Singleton : A(){
-    init{
-        println("Singleton class invoked.")
-    }
-
+object Singleton1 : A(){
     var variableName = "I am Var"
     override fun printVarName(){
-        println(variableName)
+        Log.i("qwerty",variableName)
+    }
+    init{
+        Log.i("qwerty","Singleton class invoked.")
     }
 }
 
-
-object Coin{
+object Singleton{
     private var coin: Int = 0
 
     fun getCoin():Int{
         return coin
     }
 
-    fun addCoin(){
-        coin += 10
+    fun addCoin(x:Int){
+        coin += x
     }
 
-    fun deductCoin(){
-        coin--
+    fun deductCoin(x:Int){
+        coin -= x
     }
 }

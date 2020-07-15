@@ -1,6 +1,5 @@
 package com.example.myapplication
 
-
 import android.content.Intent
 import androidx.appcompat.widget.Toolbar
 import android.content.res.Resources
@@ -11,6 +10,7 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.moxy.MainActivity5
 import com.example.myapplication.sampledata.MainActivity3
 
 
@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity(),MainActivityPresenter.View1{
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val intent = Intent(this, MainActivity4::class.java)
+        val intent = Intent(this, MainActivity5::class.java)
         startActivity(intent)
 
       /*  val request = ServiceBuilder.buildService(TmdbEndpoints::class.java)
@@ -67,7 +67,6 @@ class MainActivity : AppCompatActivity(),MainActivityPresenter.View1{
                 hideProgressBar()
             }
         })
-
         email.addTextChangedListener(object : TextWatcher{
             override fun beforeTextChanged(
                 s: CharSequence,
@@ -99,17 +98,17 @@ class MainActivity : AppCompatActivity(),MainActivityPresenter.View1{
         addContentView(progressBar, params)
         showProgressBar()
     }
-     override fun updateUserInfoTextView(info: String){
-         Log.i("asdf","updateUserInfoTextView")
-         myTextView?.setText("info")
-     }
+    override fun updateUserInfoTextView(info: String){
+        Log.i("asdf","updateUserInfoTextView")
+        myTextView?.setText("info")
+    }
 
-     override fun showProgressBar(){
-         progressBar?.setVisibility(View.VISIBLE)
-     }
+    override fun showProgressBar(){
+        progressBar?.setVisibility(View.VISIBLE)
+    }
 
-     override fun hideProgressBar(){
-         progressBar?.setVisibility(View.GONE)
-     }
+    override fun hideProgressBar(){
+        progressBar?.setVisibility(View.GONE)
+    }
 
- }
+}
